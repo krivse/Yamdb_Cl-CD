@@ -4,13 +4,11 @@ RUN pip3 install --upgrade pip
 
 RUN python -m pip install psycopg2-binary
 
-RUN mkdir /app
-
 WORKDIR /app
 
 COPY requirements.txt /app
 
-RUN pip install -r /app/requirements.txt
+RUN pip3 install -r /app/requirements.txt
 
 COPY . /app
 
