@@ -6,9 +6,9 @@ RUN python -m pip install psycopg2-binary
 
 RUN mkdir /app
 
-COPY ./ /app
+COPY . .
 
-RUN pip3 install -r app/requirements.txt --no-cache-dir
+RUN pip3 install -r requirements.txt --no-cache-dir
 
 WORKDIR /app
 
