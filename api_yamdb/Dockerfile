@@ -6,10 +6,10 @@ RUN python -m pip install psycopg2-binary
 
 RUN mkdir /app
 
-WORKDIR /app
-
-COPY . .
+COPY ./ /app
 
 RUN pip3 install -r app/requirements.txt --no-cache-dir
+
+WORKDIR /app
 
 CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000" ]
