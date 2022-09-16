@@ -11,7 +11,7 @@ jobs:
     - name: Set up Python 
       uses: actions/setup-python@v2
       with:
-        python-version: 3.7
+        python-version: 3.8.9
 
     - name: Install dependencies
       run: | 
@@ -29,6 +29,7 @@ jobs:
         # перейти в папку, содержащую manage.py — 
         #<корневая_папка_infra_actions>/<папка_проекта>/manage.py
         cd api_yamdb/
+        pytest
         # запустить написанные разработчиком тесты
   
   build_and_push_to_docker_hub:
@@ -53,7 +54,7 @@ jobs:
         uses: docker/build-push-action@v2 
         with:
           push: true
-          tags: krivse/yamdb:latest
+          tags:  ${{ secrets.DOCKER_USERNAME }}/yamdb:latest
   
   deploy:
     runs-on: ubuntu-latest
@@ -67,11 +68,17 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-          # Выполняет pull образа с DockerHub
-          sudo docker pull krivse/infra_actions
-          #остановка всех контейнеров
-          sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 5000:5000 krivse/yamdb
+            sudo docker pull rume73/yamdb_final:latest
+            sudo docker-compose stop
+            sudo docker-compose rm web
+            touch .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> .env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            sudo docker-compose up -d
 
   send_message:
     runs-on: ubuntu-latest
