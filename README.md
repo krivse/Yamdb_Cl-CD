@@ -40,4 +40,4 @@ docker-compose exec web python manage.py migrate
 
 docker-compose exec web python manage.py loaddata fixtures.json
 
-![status workflow](https://github.com/krivse/yamdb_final/workflows/yamdb_workflow.yml/badge.svg)
+![status workflow](https://github.com/krivse/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
