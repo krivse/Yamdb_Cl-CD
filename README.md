@@ -40,4 +40,6 @@ docker-compose exec web python manage.py migrate
 
 docker-compose exec web python manage.py loaddata fixtures.json
 
+Проект можно посмотреть по адресу: http://84.201.141.104:80
+
 ![status workflow](https://github.com/krivse/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
