@@ -2,10 +2,10 @@ FROM python:3.9
 RUN pip3 install --upgrade pip
 WORKDIR /app
 
-COPY requirements.txt .
+COPY ./requirements.txt .
 
 RUN pip3 install -r requirements.txt --no-cache-dir
 
-COPY . .
+COPY .. .
 
-CMD ["gunicorn", "api_yamdb.api_yamdb.wsgi:application", "--bind", "0:8000"]
+CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000"]
