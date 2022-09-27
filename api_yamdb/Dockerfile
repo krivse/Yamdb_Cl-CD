@@ -6,4 +6,4 @@ COPY . .
 
 RUN pip3 install -r api_yamdb/requirements.txt --no-cache-dir
 
-CMD ["python3", "api_yamdb.manage.py", "runserver", "0:8000"]
+CMD ["python3", "api_yamdb/manage.py", "runserver", "0:8000"]
