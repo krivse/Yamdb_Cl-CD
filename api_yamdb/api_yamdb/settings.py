@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='p&l%385148kslhtyn^##a1)ilz@4zqj=rq
 
 DEBUG = os.getenv('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['*', '84.201.141.104', '127.0.0.1', 'web', 'localhost']
+ALLOWED_HOSTS = ['*', '51.250.102.144', '127.0.0.1', 'web', 'localhost']
 
 CSV_FILES_DIR = os.path.join(BASE_DIR, 'static/data')
 
