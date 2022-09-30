@@ -43,7 +43,7 @@ jobs:
         with:
           context: ./api_yamdb
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/remote_yamdb:2022
+          tags: krivse/remote_yamdb:2022
 
   deploy:
     runs-on: ubuntu-latest
