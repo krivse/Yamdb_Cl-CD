@@ -40,6 +40,31 @@ docker-compose exec web python manage.py migrate
 
 docker-compose exec web python manage.py loaddata fixtures.json
 
-Проект можно посмотреть по адресу: http://84.201.141.104:80
+Собрать статику:
+
+docker-compose exec web python manage.py collectstatic --no-input
+
+Проект можно посмотреть по адресу: http://51.250.102.144/admin
+
+Доступные адреса для просмотра:
+
+- Список категорий http://127.0.0.1/api/v1/categories/
+
+- Список жанров http://127.0.0.1/api/v1/genres/
+
+- Список названий http://127.0.0.1/api/v1/titles/
+
+- Список отзывов http://127.0.0.1/api/v1/titles/1/reviews/
+
+- Список комментариев http://127.0.0.1/api/v1/titles/1/reviews/1/comments/
+
+- Список пользователей http://127.0.0.1/api/v1/users/
+
+- Профиль пользователя http://127.0.0.1/api/v1/users/me/
+
+- Вы также можете добавить идентификационный номер в конец пути к конечной точке списка, чтобы получить отдельный экземпляр, как показано здесь: http://127.0.0.1/api/v1/titles/1/reviews/1
+
+- Готовая документация API по ссылке:
+http://127.0.0.1/redoc
 
 ![status workflow](https://github.com/krivse/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
